@@ -29,7 +29,7 @@ export enum VARIANTS {
   SECONDARY_TX,
 }
 
-const Colors = {
+export const Colors = {
   [VARIANTS.WHITE]: '#FFFFFF',
   [VARIANTS.BLACK]: '#000000',
   [VARIANTS.SURFACE_BG]: '#F4F4F4',

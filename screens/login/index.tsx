@@ -15,7 +15,7 @@ export const LoginScreen = ({navigation}) => {
   const onSubmit = useCallback(async () => {
     try {
       await AsyncStorage.setItem('@user', name);
-      navigation.navigate('Overview');
+      navigation.navigate('Home');
     } catch (e) {
       Alert.alert('Login failed', 'an error occurred trying to login');
     }

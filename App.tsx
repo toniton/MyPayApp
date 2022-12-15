@@ -11,7 +11,6 @@
 import React from 'react';
 import {useColorScheme} from 'react-native';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -19,6 +18,7 @@ import {LoginScreen} from './screens/login';
 import {HomeScreen} from './screens/home';
 
 import create from 'zustand';
+import {Colors, VARIANTS} from './styles';
 // Typescript:
 // TODO:
 // Implement balance function and update the balance transaction added/removed
@@ -55,11 +55,7 @@ export const useAppStore = create(set => ({
 const Stack = createNativeStackNavigator();
 
 const App = () => {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
+  // const isDarkMode = useColorScheme() === 'dark';
 
   return (
     <NavigationContainer>
@@ -69,7 +65,18 @@ const App = () => {
           component={LoginScreen}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="Overview" component={HomeScreen} />
+        <Stack.Screen
+          name="Home"
+          component={HomeScreen}
+          options={{
+            title: 'Overview',
+            headerStyle: {
+              backgroundColor: Colors[VARIANTS.SURFACE_BG],
+            },
+            headerShadowVisible: false,
+            headerBackTitleVisible: false,
+          }}
+        />
       </Stack.Navigator>
       {/* <SafeAreaView style={backgroundStyle}>
         <StatusBar
