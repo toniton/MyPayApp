@@ -4,27 +4,29 @@ import {Button, SafeAreaView, Text, View, FlatList} from 'react-native';
 import {TransactionsType} from '../../models/transactions';
 import {styles} from '../../styles';
 import {useTransactions} from './hooks/use-transactions';
+import Chance from 'chance';
+var chance = new Chance();
 
 const Item = ({
   title,
   subtitle,
-  value,
+  trailing,
+  subtrailing,
 }: {
   title: string;
   subtitle: string;
-  value: string;
+  trailing: string;
+  subtrailing: string;
 }) => (
   <View style={styles.listItem}>
-    <View style={[styles.flex]}>
+    <View style={[styles.flex, styles.listItemContent]}>
       <Text style={styles.body}>{title}</Text>
-      <Text style={[styles.label, styles.none]}>{subtitle}</Text>
+      <Text style={[styles.label]}>{subtitle}</Text>
+      <Text style={[styles.small]}>{subtrailing}</Text>
     </View>
     <View style={[styles.listItemTrailing]}>
       <Text style={[styles.body, styles.bold, styles.rightAlign]}>
-        ${value}.00
-      </Text>
-      <Text style={[styles.label, styles.small, styles.rightAlign]}>
-        21 Nov, 2022 21:00
+        ${trailing}.00
       </Text>
     </View>
   </View>
@@ -52,9 +54,9 @@ export const HomeScreen = () => {
 
   const onSubmit = useCallback(() => {
     createTransaction({
-      reference: 'RNPYLD20',
-      description: 'house rent',
-      amount: 40,
+      reference: chance.hash({casing: 'upper', length: 7}),
+      description: chance.sentence({words: 6}),
+      amount: chance.integer({min: -150, max: 200}),
     });
   }, [createTransaction]);
 
@@ -62,7 +64,8 @@ export const HomeScreen = () => {
     <Item
       title={item.reference}
       subtitle={item.description}
-      value={item.amount.toString()}
+      trailing={item.amount.toString()}
+      subtrailing={new Date(item.createdAt).toLocaleString('en-US')}
     />
   );
 
@@ -75,7 +78,9 @@ export const HomeScreen = () => {
           <Text style={[styles.title, styles.bold]}>${balance}</Text>
         </View>
         {name && <Text style={styles.highlight}>Hi {name} 👋</Text>}
-        <Button onPress={onSubmit} title="Create transaction" />
+        <View style={styles.button}>
+          <Button onPress={onSubmit} title="Create transaction" />
+        </View>
       </View>
       <View style={[styles.curved, styles.flex, styles.sheet]}>
         <View style={[styles.section, styles.content]}>

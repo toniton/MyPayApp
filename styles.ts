@@ -98,6 +98,9 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
+  listItemContent: {
+    marginEnd: Dimensions[SIZES.L],
+  },
   listItemTrailing: {
     flexBasis: 'auto',
   },
