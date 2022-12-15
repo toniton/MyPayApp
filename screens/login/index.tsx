@@ -2,7 +2,7 @@ import React, {useState, useCallback} from 'react';
 import {SafeAreaView, TextInput, Text, Button, View, Alert} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {styles, VARIANTS} from '../../styles';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import {Colors} from 'react-native/Libraries/NewAppScreen';
 
 export const LoginScreen = ({navigation}) => {
   const [name, setName] = useState<string>('Hi');
@@ -32,6 +32,7 @@ export const LoginScreen = ({navigation}) => {
           <TextInput
             style={styles.input}
             onChangeText={onChangeText}
+            autoComplete={'off'}
             textContentType="username"
             value={name}
             placeholder="Username"
