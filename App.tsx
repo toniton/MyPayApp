@@ -69,7 +69,7 @@ const App = () => {
           component={LoginScreen}
           options={{headerShown: false}}
         />
-        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Overview" component={HomeScreen} />
       </Stack.Navigator>
       {/* <SafeAreaView style={backgroundStyle}>
         <StatusBar
