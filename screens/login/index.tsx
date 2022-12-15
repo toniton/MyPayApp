@@ -15,7 +15,7 @@ export const LoginScreen = ({navigation}) => {
   const onSubmit = useCallback(async () => {
     try {
       await AsyncStorage.setItem('@user', name);
-      navigation.navigate('Home');
+      navigation.navigate('Overview');
     } catch (e) {
       Alert.alert('Login failed', 'an error occurred trying to login');
     }
@@ -24,8 +24,8 @@ export const LoginScreen = ({navigation}) => {
   }, [name, navigation]);
 
   return (
-    <SafeAreaView style={{flex: 1}}>
-      <View style={styles.container}>
+    <SafeAreaView style={styles.flex}>
+      <View style={[styles.container, styles.stretch]}>
         <Text style={styles.title}>Login</Text>
         <View style={styles.section}>
           <Text style={styles.label}>Username</Text>

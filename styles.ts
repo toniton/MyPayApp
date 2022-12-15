@@ -56,10 +56,15 @@ export const styles = StyleSheet.create({
   highlight: {
     fontWeight: '700',
   },
-  container: {
-    paddingHorizontal: Dimensions[SIZES.XL],
+  flex: {
+    flex: 1,
+  },
+  stretch: {
     flex: 1,
     alignItems: 'stretch',
+  },
+  container: {
+    padding: Dimensions[SIZES.XL],
     justifyContent: 'center',
     backgroundColor: Colors[VARIANTS.SURFACE_BG],
   },
