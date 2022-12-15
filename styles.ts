@@ -1,12 +1,13 @@
 import {StyleSheet} from 'react-native';
 
 export enum SIZES {
-  XS,
-  S,
-  M,
-  L,
-  XL,
-  XXL,
+  XS = 'XS',
+  S = 'S',
+  M = 'M',
+  L = 'L',
+  X = 'X',
+  XL = 'XL',
+  XXL = 'XXL',
 }
 
 export const Dimensions = {
@@ -19,14 +20,14 @@ export const Dimensions = {
 };
 
 export enum VARIANTS {
-  WHITE,
-  BLACK,
-  SURFACE_BG,
-  SURFACE_TX,
-  PRIMARY_BG,
-  PRIMARY_TX,
-  SECONDARY_BG,
-  SECONDARY_TX,
+  WHITE = 'WHITE',
+  BLACK = 'BLACK',
+  SURFACE_BG = 'SURFACE_BG',
+  SURFACE_TX = 'SURFACE_TX',
+  PRIMARY_BG = 'PRIMARY_BG',
+  PRIMARY_TX = 'PRIMARY_TX',
+  SECONDARY_BG = 'SECONDARY_BG',
+  SECONDARY_TX = 'SECONDARY_TX',
 }
 
 export const Colors = {
