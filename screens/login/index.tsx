@@ -1,11 +1,12 @@
 import React, {useState, useCallback} from 'react';
 import {SafeAreaView, TextInput, Text, Button, View, Alert} from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import {styles, VARIANTS} from '../../styles';
 import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {useLogin} from './hooks/use-login';
 
 export const LoginScreen = ({navigation}) => {
   const [name, setName] = useState<string>('Hi');
+  const login = useLogin();
 
   const onChangeText = (inputText: string) => {
     console.log(inputText);
@@ -14,14 +15,14 @@ export const LoginScreen = ({navigation}) => {
 
   const onSubmit = useCallback(async () => {
     try {
-      await AsyncStorage.setItem('@user', name);
+      login.signIn(name);
       navigation.navigate('Home');
     } catch (e) {
       Alert.alert('Login failed', 'an error occurred trying to login');
     }
     // TODO: Set the name in global storage
     // TODO: Navigate to the home screen
-  }, [name, navigation]);
+  }, [login, name, navigation]);
 
   return (
     <SafeAreaView style={styles.flex}>

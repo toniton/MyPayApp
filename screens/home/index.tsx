@@ -1,10 +1,10 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useCallback, useEffect, useState} from 'react';
 import {Button, SafeAreaView, Text, View, FlatList} from 'react-native';
 import {TransactionsType} from '../../models/transactions';
 import {styles} from '../../styles';
 import {useTransactions} from './hooks/use-transactions';
 import Chance from 'chance';
+import {useUser} from '../../shared/hooks/use-user';
 var chance = new Chance();
 
 const Item = ({
@@ -33,7 +33,7 @@ const Item = ({
 );
 
 export const HomeScreen = () => {
-  const [name, setName] = useState<string | null>(null);
+  const username = useUser(state => state.username);
   const initialBalance = useTransactions(state => state.balance);
   const [balance, setBalance] = useState<number | null>(initialBalance);
   const transactions = useTransactions(state => state.transactions);
@@ -43,10 +43,6 @@ export const HomeScreen = () => {
     const unsubscribeBalance = useTransactions.subscribe(state =>
       setBalance(state.balance),
     );
-    (async () => {
-      const username = await AsyncStorage.getItem('@user');
-      setName(username);
-    })();
     return () => {
       unsubscribeBalance();
     };
@@ -77,7 +73,7 @@ export const HomeScreen = () => {
           <Text style={styles.label}>Balance</Text>
           <Text style={[styles.title, styles.bold]}>${balance}</Text>
         </View>
-        {name && <Text style={styles.highlight}>Hi {name} 👋</Text>}
+        {username && <Text style={styles.highlight}>Hi {username} 👋</Text>}
         <View style={styles.button}>
           <Button onPress={onSubmit} title="Create transaction" />
         </View>
