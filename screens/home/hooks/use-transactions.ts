@@ -4,7 +4,9 @@ import {TransactionsType} from '../../../models/transactions';
 type TransactionsState = {
   balance: number;
   transactions: TransactionsType[];
-  addTransaction: (transaction: TransactionsType) => void;
+  addTransaction: (
+    transaction: Omit<TransactionsType, 'id' | 'createdAt'>,
+  ) => void;
 };
 
 export const useTransactions = create<TransactionsState>(set => ({
