@@ -11,9 +11,9 @@ export enum SIZES {
 
 export const Dimensions = {
   [SIZES.XS]: 2,
-  [SIZES.S]: 4,
-  [SIZES.M]: 8,
-  [SIZES.L]: 16,
+  [SIZES.S]: 8,
+  [SIZES.M]: 14,
+  [SIZES.L]: 18,
   [SIZES.XL]: 32,
   [SIZES.XXL]: 64,
 };
@@ -37,6 +37,7 @@ export const Colors = {
   [VARIANTS.PRIMARY_BG]: '#000000',
   [VARIANTS.PRIMARY_TX]: '#FAFAFA',
   [VARIANTS.SECONDARY_TX]: '#70757a',
+  [VARIANTS.SECONDARY_BG]: '#d0d7de',
 };
 
 export const styles = StyleSheet.create({
@@ -63,14 +64,42 @@ export const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'stretch',
   },
+  curved: {
+    borderTopStartRadius: Dimensions[SIZES.XL],
+    borderTopEndRadius: Dimensions[SIZES.XL],
+  },
   container: {
-    padding: Dimensions[SIZES.XL],
+    paddingVertical: Dimensions[SIZES.L],
+    paddingHorizontal: Dimensions[SIZES.XL],
     justifyContent: 'center',
     backgroundColor: Colors[VARIANTS.SURFACE_BG],
   },
+  content: {
+    padding: Dimensions[SIZES.L],
+  },
+  none: {
+    padding: 0,
+    margin: 0,
+  },
+  sheet: {
+    backgroundColor: Colors[VARIANTS.WHITE],
+  },
   section: {
     marginTop: Dimensions[SIZES.L],
-    // paddingHorizontal: Dimensions[SIZES.XL],
+  },
+  list: {
+    marginTop: Dimensions[SIZES.M],
+  },
+  listItem: {
+    paddingVertical: Dimensions[SIZES.L],
+    paddingHorizontal: Dimensions[SIZES.L],
+    borderBottomWidth: 1,
+    borderColor: Colors[VARIANTS.SECONDARY_BG],
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+  },
+  listItemTrailing: {
+    flexBasis: 'auto',
   },
   title: {
     color: Colors[VARIANTS.SURFACE_TX],
@@ -81,6 +110,22 @@ export const styles = StyleSheet.create({
     color: Colors[VARIANTS.SECONDARY_TX],
     fontSize: Dimensions[SIZES.L],
     marginBottom: Dimensions[SIZES.M],
+  },
+  body: {
+    color: Colors[VARIANTS.SURFACE_TX],
+    fontSize: Dimensions[SIZES.L],
+    marginBottom: Dimensions[SIZES.M],
+  },
+  bold: {
+    fontWeight: '700',
+  },
+  small: {
+    fontSize: Dimensions[SIZES.M],
+    fontWeight: '400',
+  },
+  rightAlign: {
+    alignContent: 'flex-end',
+    textAlign: 'right',
   },
   input: {
     height: Dimensions[SIZES.XXL],
