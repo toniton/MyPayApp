@@ -70,7 +70,7 @@ export const HomeScreen = () => {
       <SafeAreaView />
       <View style={[styles.container]}>
         <View style={styles.section}>
-          <Text style={styles.label}>Balance</Text>
+          <Text style={styles.label}>Available balance</Text>
           <Text style={[styles.title, styles.bold]}>${balance}</Text>
         </View>
         {username && <Text style={styles.highlight}>Hi {username} 👋</Text>}
@@ -84,7 +84,7 @@ export const HomeScreen = () => {
       </View>
       <View style={[styles.curved, styles.flex, styles.sheet]}>
         <View style={[styles.section, styles.content]}>
-          <Text style={[styles.body, styles.bold]}>Transactions</Text>
+          <Text style={[styles.body, styles.bold]}>Recent transactions</Text>
         </View>
         <FlatList
           style={[styles.flex, styles.list]}
