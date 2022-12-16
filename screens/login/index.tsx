@@ -1,7 +1,6 @@
 import React, {useState, useCallback} from 'react';
 import {SafeAreaView, TextInput, Text, Button, View, Alert} from 'react-native';
-import {styles, VARIANTS} from '../../styles';
-import {Colors} from 'react-native/Libraries/NewAppScreen';
+import {Colors, styles, VARIANTS} from '../../styles';
 import {useLogin} from './hooks/use-login';
 
 export const LoginScreen = ({navigation}) => {

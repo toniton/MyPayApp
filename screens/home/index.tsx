@@ -1,7 +1,7 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import {Button, SafeAreaView, Text, View, FlatList} from 'react-native';
 import {TransactionsType} from '../../models/transactions';
-import {styles} from '../../styles';
+import {Colors, styles, VARIANTS} from '../../styles';
 import {useTransactions} from './hooks/use-transactions';
 import Chance from 'chance';
 import {useUser} from '../../shared/hooks/use-user';
@@ -75,7 +75,11 @@ export const HomeScreen = () => {
         </View>
         {username && <Text style={styles.highlight}>Hi {username} 👋</Text>}
         <View style={styles.button}>
-          <Button onPress={onSubmit} title="Create transaction" />
+          <Button
+            color={Colors[VARIANTS.PRIMARY_TX]}
+            onPress={onSubmit}
+            title="Create transaction"
+          />
         </View>
       </View>
       <View style={[styles.curved, styles.flex, styles.sheet]}>
